@@ -1,4 +1,5 @@
 import time
+import os
 
 def iterate(current_index, condition, id_list):
     if condition == 'NEXT':
@@ -32,7 +33,16 @@ def update_log(log_path, user):
         logstr = f'\n{current_daytime}   {user}'
         logs = log.write(logstr)
 
+def check_and_create_file(file_path):
+    if not os.path.exists(file_path):
+        with open(file_path, 'w') as f:
+            pass 
+        print(f"File {file_path} created.")
+    else:
+        print(f"File {file_path} already exists.")
+
 def read_logs(log_path):
+    check_and_create_file(log_path)
     with open (log_path, 'r') as log:
         logs = log.readlines()
         last_lines = logs[-10:]

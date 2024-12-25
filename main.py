@@ -36,4 +36,4 @@ def logs():
             return render_template('history.html', your_list=result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port = 8080)
