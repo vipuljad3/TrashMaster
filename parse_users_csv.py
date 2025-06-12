@@ -1,7 +1,9 @@
 import pandas as pd
 
 def read_users(path):
-    return (pd.read_csv(path))
+    df = pd.read_csv(path)
+    df = df[df["Active"] == 1]
+    return df
 
 def write_users(path, data):
     data.to_csv(path,index = False)
